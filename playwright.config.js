@@ -28,7 +28,7 @@ export default defineConfig({
   // timeout: 40 * 1000, // override existing timeout
   expect:
   {
-       // timeout: 40 * 1000, // override existing timeout for asseration
+       timeout: 5000, // override existing timeout for asseration 
   },
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
