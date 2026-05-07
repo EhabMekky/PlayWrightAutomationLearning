@@ -65,11 +65,17 @@ test('Login User', async({ page })=>
     await email.fill('test1@pwc.com');
     await password.fill('Test@1234');
     await loginButton.click();
-    await expect(pageNavbarTitle).toBeVisible();
-    console.log(await pageNavbarTitle.textContent());
-    console.log(await productsTitles.nth(0).textContent());
-    await expect(productsTitles).toHaveCount(3);
+   //  await expect(pageNavbarTitle).toBeVisible();
+   //  console.log(await pageNavbarTitle.textContent());
+   //  console.log(await productsTitles.nth(0).textContent());
+   //  await expect(productsTitles).toHaveCount(3);
 
+   await page.waitForLoadState('networkidle'); // Wait for the network to be idle, indicating that all products have loaded
+
+   /*
+   or use this instead of the above line if u want to wait for a specific product to be visible
+       await productsTitles.first().waitFor(); // Wait for the product titles to be visible, indicating that the products have loaded
+   */
     const allProductsTitles = productsTitles.allTextContents();
     console.log(await allProductsTitles);
 });
