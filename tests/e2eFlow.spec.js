@@ -4,6 +4,7 @@ const DashboardPage = require('../pages/DashboardPage');
 const CartPage = require('../pages/Cart');
 const CheckoutPage = require('../pages/CheckoutPage');
 const testData = require('../utils/testData');
+const data = testData.checkoutDetails;
 
 test.describe('E2E Shopping Flow', () =>{
     test.only('Complete purchase flow - Add to cart and checkout', async({ page })=>
@@ -34,8 +35,8 @@ test.describe('E2E Shopping Flow', () =>{
          await cartPage.proceedToCheckout();
 
          await checkoutPage.selectCountry(testData.checkoutDetails.country);
-         await checkoutPage.enterPaymentDetails(testData.checkoutDetails.cvv, testData.checkoutDetails.nameOnCard, testData.checkoutDetails.cardNumber);
-         await checkoutPage.enterCouponCode(testData.checkoutDetails.couponCode);
+         await checkoutPage.enterPaymentDetails(data.cvv, data.nameOnCard, data.cardNumber);
+         await checkoutPage.enterCouponCode(data.couponCode);
          await checkoutPage.assertCouponApplied();
          await checkoutPage.placeOrder();
     });
