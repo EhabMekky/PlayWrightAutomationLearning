@@ -18,7 +18,18 @@ class CheckoutPage {
 
     async selectCountry(countryName)
     {
-        await this.countryInput.fill(countryName);
+        await this.countryInput.type(countryName, { delay: 100 });
+        await this.countryDropdownOptions.waitFor();
+        const count = await this.countryDropdownOptions.count();
+        for(let i=0; i < count; i++)
+        {
+            const text = await this.countryDropdownOptions.nth(i).textContent();
+            if (text.toLowerCase().includes(countryName.toLowerCase())) {
+                await this.countryDropdownOptions.nth(i).click();
+                break;
+            }   
+        }
+
     }
 
     async enterPaymentDetails(cvv, nameOnCard, cardNumber)

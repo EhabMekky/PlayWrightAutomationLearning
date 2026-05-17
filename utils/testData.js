@@ -10,7 +10,7 @@ module.exports = {
     iphone: 'iphone 13 pro'
    },
    checkoutDetails: {
-    country: 'Egypt',
+    country: 'Egy',
     nameOnCard: 'Test User',
     cvv: '778',
     cardNumber: '4111 1111 1111 1111',

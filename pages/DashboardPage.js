@@ -41,7 +41,7 @@ class DashboardPage {
     async getCartCount()
     {
         const text = await this.cartCount.textContent();
-        return parseInt(text);
+        return Number.parseInt(text);
     }
 
     async getAllProductsTitles()
