@@ -3,6 +3,7 @@ const LoginPage = require('../pages/LoginPage');
 const DashboardPage = require('../pages/DashboardPage');
 const CartPage = require('../pages/Cart');
 const CheckoutPage = require('../pages/CheckoutPage');
+const ThanksPage = require('../pages/ThaksPage');
 const testData = require('../utils/testData');
 const data = testData.checkoutDetails;
 
@@ -13,6 +14,7 @@ test.describe('E2E Shopping Flow', () =>{
          const dashboardPage = new DashboardPage(page);
          const cartPage = new CartPage(page);
          const checkoutPage = new CheckoutPage(page);
+         const thanksPage = new ThanksPage(page);
 
          await loginPage.goto();
          await loginPage.assertOnPageTitle();
@@ -39,5 +41,8 @@ test.describe('E2E Shopping Flow', () =>{
          await checkoutPage.enterCouponCode(data.couponCode);
          await checkoutPage.assertCouponApplied();
          await checkoutPage.placeOrder();
+
+         await thanksPage.assertThanksMessage();
+         await thanksPage.getProductsCount(2);
     });
 });
