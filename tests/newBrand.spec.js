@@ -9,7 +9,7 @@ const customerData = testData.bookkingCustomerDetails;
 
 test.describe('New Brand User Login Test', () => {
 
-  test.only('Complete e2e flow to create and manage a new brand event', async ({loginPage, homePage, newEventPage, upcomingEventsPage}) => {
+  test('Complete e2e flow to create and manage a new brand event', async ({loginPage, homePage, newEventPage, upcomingEventsPage}) => {
     await loginPage.navigateToLoginPage();
     await loginPage.assertOnPageTitle();
     await loginPage.login(data.email, data.password);
