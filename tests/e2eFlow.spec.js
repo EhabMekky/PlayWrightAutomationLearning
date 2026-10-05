@@ -1,14 +1,14 @@
 const { test, expect } = require('@playwright/test');
-const LoginPage = require('../pages/LoginPage');
-const DashboardPage = require('../pages/DashboardPage');
-const CartPage = require('../pages/Cart');
-const CheckoutPage = require('../pages/CheckoutPage');
-const ThanksPage = require('../pages/ThaksPage');
+const LoginPage = require('../pages/coursePages/LoginPage');
+const DashboardPage = require('../pages/coursePages/DashboardPage');
+const CartPage = require('../pages/coursePages/Cart');
+const CheckoutPage = require('../pages/coursePages/CheckoutPage');
+const ThanksPage = require('../pages/coursePages/ThaksPage');
 const testData = require('../utils/testData');
 const data = testData.checkoutDetails;
 
 test.describe('E2E Shopping Flow', () =>{
-    test.only('Complete purchase flow - Add to cart and checkout', async({ page })=>
+    test('Complete purchase flow - Add to cart and checkout', async({ page })=>
     {
          const loginPage = new LoginPage(page);
          const dashboardPage = new DashboardPage(page);
@@ -46,3 +46,4 @@ test.describe('E2E Shopping Flow', () =>{
          await thanksPage.getProductsCount(2);
     });
 });
+                                  
