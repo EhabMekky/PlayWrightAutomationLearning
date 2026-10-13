@@ -13,7 +13,8 @@ class UpcomingEventsPage {
         this.fullnameInput = page.locator("#customerName");
         this.emailInput = page.locator("#customer-email");
         this.phoneInput = page.getByPlaceholder("+91 98765 43210");
-        this.bookButton = page.locator(".confirm-booking-btn");
+        this.bookNowButton = page.locator("[id='book-now-btn']");
+        this.confirmButton = page.locator("[id='confirm-booking']")
     }
 
     async assertOnPageTitle() {
@@ -49,7 +50,7 @@ class UpcomingEventsPage {
     async clickBookNowButton(eventName) {
         const eventCard = this.eventCards.filter({ hasText: eventName });
         await expect(eventCard).toHaveCount(1);
-        await eventCard.getByRole('link', { name: 'Book Now' }).click();
+        await eventCard.locator(this.bookNowButton).click();
     }
 
     async assertTicketCountAfterBooking(expectedCount) {
@@ -65,10 +66,9 @@ class UpcomingEventsPage {
         await this.phoneInput.fill(phone);
     }
 
-    async clickBookButton() {
-        await this.bookButton.click();
+    async clickConfirmButton() {
+        await this.confirmButton.click();
     }
-
 }
 
 module.exports = { UpcomingEventsPage };
